@@ -2,6 +2,12 @@ name = "atem-preset-votes"
 main = "src/index.js"
 compatibility_date = "2026-01-01"
 
+# A custom domain rather than workers.dev: it avoids a one-time interactive subdomain
+# registration, and the endpoint the app talks to is then a name you own.
+[[routes]]
+pattern = "votes.studioupgrade.com"
+custom_domain = true
+
 [[d1_databases]]
 binding = "DB"
 database_name = "atem-preset-votes"

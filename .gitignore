@@ -1,0 +1,5 @@
+node_modules/
+site/index.json
+site/packs/
+.wrangler/
+.DS_Store

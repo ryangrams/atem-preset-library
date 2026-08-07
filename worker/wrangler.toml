@@ -1,0 +1,11 @@
+name = "atem-preset-votes"
+main = "src/index.js"
+compatibility_date = "2026-01-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "atem-preset-votes"
+database_id = "REPLACE_AFTER_d1_create"
+
+# Secret, set with `wrangler secret put VOTE_SALT` — without it voter hashes would be
+# precomputable from a list of IP addresses.

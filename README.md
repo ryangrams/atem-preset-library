@@ -41,8 +41,9 @@ known fields with plausible values, and the app ignores anything it does not rec
 ## How it is served
 
 `packs/*.json` are the source of truth. On merge, CI validates them, builds `site/index.json`,
-and deploys `site/` to Cloudflare Pages. Vote counts come from a small Worker (`worker/`) backed
-by D1 — the one piece a static site cannot do. It stores a salted hash of the voter's IP and
+and deploys `site/` to Cloudflare Pages. Vote counts come from Pages Functions (`functions/`)
+backed by D1 — the one piece a static site cannot do. They run on the same origin as the site, so
+there is no second service to keep in step. A vote stores a salted hash of the voter's IP and
 nothing else.
 
 MIT licensed. Not affiliated with Blackmagic Design.

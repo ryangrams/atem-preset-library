@@ -76,9 +76,9 @@
 		</footer>
 
 		<script>
-			// The index is a static file; only the vote tallies come from the Worker, so the page
-			// still renders if the Worker is unreachable.
-			const VOTES_API = 'https://atem-preset-votes.ryangrams.workers.dev'
+			// The index is a static file; only the tallies are dynamic, and they come from a Pages
+			// Function on this same origin. If it is unreachable the page still lists everything.
+			const VOTES_API = '/api'
 			const voted = new Set(JSON.parse(localStorage.getItem('voted') ?? '[]'))
 
 			const esc = (s) => String(s).replace(/[&<>]/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' })[c])

@@ -1,0 +1,9 @@
+name = "atem-preset-library"
+compatibility_date = "2026-01-01"
+pages_build_output_dir = "site"
+
+# The votes table. Pages Functions get the same D1 binding a Worker would.
+[[d1_databases]]
+binding = "DB"
+database_name = "atem-preset-votes"
+database_id = "2b851612-9dda-4584-9ce3-ffae1cac70ae"

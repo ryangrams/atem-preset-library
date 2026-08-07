@@ -67,7 +67,9 @@ function checkChannel(file, ch) {
 }
 
 const packs = []
-for (const file of fs.readdirSync(PACK_DIR).filter((f) => f.endsWith('.json')).sort()) {
+// An empty library is a valid state — it is how this starts.
+const packFiles = fs.existsSync(PACK_DIR) ? fs.readdirSync(PACK_DIR).filter((f) => f.endsWith('.json')).sort() : []
+for (const file of packFiles) {
 	const full = path.join(PACK_DIR, file)
 	let body
 	try {

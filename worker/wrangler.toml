@@ -5,7 +5,7 @@ compatibility_date = "2026-01-01"
 [[d1_databases]]
 binding = "DB"
 database_name = "atem-preset-votes"
-database_id = "REPLACE_AFTER_d1_create"
+database_id = "2b851612-9dda-4584-9ce3-ffae1cac70ae"
 
 # Secret, set with `wrangler secret put VOTE_SALT` — without it voter hashes would be
 # precomputable from a list of IP addresses.

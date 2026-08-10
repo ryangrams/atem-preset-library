@@ -122,8 +122,12 @@ export async function turnstileVerify(token, secret, ip) {
 	}
 }
 
-/** Cheap D1 rate check for the one non-idempotent write (comment post): N in the last `windowMs`. */
+// D1/SQLite cannot bind a table identifier, so `table` is interpolated — allow only known names, so
+// this can never become an injection point even if a caller passes user input by mistake.
+const RATE_TABLES = new Set(['comments', 'votes'])
+/** Cheap D1 rate check for a non-idempotent write: has this voter done N of them in the last window? */
 export async function tooManyRecent(env, table, voter, limit, windowMs) {
+	if (!RATE_TABLES.has(table)) throw new Error(`rate-limit table not allowed: ${table}`)
 	const since = Date.now() - windowMs
 	const row = await env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table} WHERE voter = ? AND created_at >= ?`).bind(voter, since).first()
 	return (row?.n ?? 0) >= limit
@@ -144,11 +148,12 @@ export async function loadComments(env, presetId, voter) {
 		.all()
 	const rows = results ?? []
 
+	// Which of THIS preset's comments the voter marked helpful — a JOIN, so the bind count is fixed
+	// (an IN(...) with one placeholder per comment would blow SQLite's bound-parameter limit).
 	let helpfulSet = new Set()
 	if (voter && rows.length) {
-		const placeholders = rows.map(() => '?').join(',')
-		const { results: hv } = await env.DB.prepare(`SELECT comment_id FROM comment_helpful WHERE voter = ? AND comment_id IN (${placeholders})`)
-			.bind(voter, ...rows.map((r) => r.id))
+		const { results: hv } = await env.DB.prepare('SELECT h.comment_id FROM comment_helpful h JOIN comments c ON c.id = h.comment_id WHERE h.voter = ? AND c.preset_id = ?')
+			.bind(voter, presetId)
 			.all()
 		helpfulSet = new Set((hv ?? []).map((r) => r.comment_id))
 	}

@@ -73,8 +73,8 @@ export async function onRequestPost({ request, env, params }) {
 			"INSERT INTO comments (id, preset_id, parent_id, author, body, rating, reply_to_name, status, helpful_count, reply_count, voter, created_at) VALUES (?, ?, ?, ?, ?, ?, ?, 'visible', 0, 0, ?, ?)",
 		).bind(cid, id, storedParent, author, text, rating, replyToName, voter, now),
 	]
-	// Keep the parent's reply_count exact (recomputed, so it can't drift).
-	if (storedParent) stmts.push(env.DB.prepare('UPDATE comments SET reply_count = (SELECT COUNT(*) FROM comments WHERE parent_id = ?) WHERE id = ?').bind(storedParent, storedParent))
+	// Keep the parent's reply_count exact and counting only VISIBLE replies (recomputed, never drifts).
+	if (storedParent) stmts.push(env.DB.prepare("UPDATE comments SET reply_count = (SELECT COUNT(*) FROM comments WHERE parent_id = ? AND status = 'visible') WHERE id = ?").bind(storedParent, storedParent))
 	// A comment may double as a review — one star per voter, upserted.
 	if (rating != null) {
 		stmts.push(

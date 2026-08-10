@@ -38,6 +38,10 @@ function stable(v) {
 }
 const contentHashOf = (channel) => 'sha256:' + crypto.createHash('sha256').update(stable(channel ?? null)).digest('hex').slice(0, 32)
 const slugify = (s) => String(s).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60) || 'preset'
+// Submissions are attacker-controlled, so every string that reaches the served index is length-capped
+// and a link is only kept if it is an http(s) URL.
+const capStr = (v, n) => (isStr(v) ? v.slice(0, n) : v == null ? null : String(v).slice(0, n))
+const httpUrl = (v) => (isStr(v) && /^https?:\/\/\S+$/i.test(v) ? v.slice(0, 500) : null)
 
 /** A band as the switcher stores it: integer dB×100, Hz, Q×100. */
 function checkBand(file, b, i) {
@@ -147,31 +151,41 @@ for (const file of packFiles) {
 			if (p?.originalAuthor == null) fail(file, `variant "${p.name}" must name the original author (originalAuthor)`)
 		}
 
+		// A bounded, serialisable channel — so a giant or pathologically-nested payload can neither
+		// bloat the served index nor overflow the recursive hasher below.
+		let channelJson = 'null'
+		try {
+			channelJson = JSON.stringify(p.channel ?? null)
+		} catch {
+			fail(file, `preset "${p?.name ?? '?'}" has a channel that cannot be serialised`)
+		}
+		if (channelJson.length > 20000) fail(file, `preset "${p?.name ?? '?'}" channel is too large (${channelJson.length} bytes)`)
+
 		if (errors.length) continue // don't index a pack with problems; keep collecting errors
 
 		const entry = {
 			id,
 			slug: slugify(p.name),
-			name: p.name,
-			group: p.group ?? '',
-			mic: p.mic ?? null,
-			style: p.style ?? null,
-			author: p.author ?? null,
+			name: capStr(p.name, 200),
+			group: capStr(p.group ?? '', 100) ?? '',
+			mic: capStr(p.mic, 120),
+			style: capStr(p.style, 120),
+			author: capStr(p.author, 120),
 			license,
 			status,
 			defaultSections: p.defaultSections ?? null,
-			device: p.device ? { model: p.device.model ?? null, release: p.device.release ?? null, build: p.device.build ?? null } : null,
-			sampleUrl: p.sampleUrl ?? null,
-			notes: p.notes ?? null,
+			device: p.device ? { model: capStr(p.device.model, 120), release: capStr(p.device.release, 60), build: capStr(p.device.build, 60) } : null,
+			sampleUrl: httpUrl(p.sampleUrl),
+			notes: capStr(p.notes, 4000),
 			channel: p.channel, // full — the detail view needs it; the list Function strips it
 			forkedFrom,
 			lineageRoot: isStr(p?.lineageRoot) && PRESET_ID.test(p.lineageRoot) ? p.lineageRoot : forkedFrom?.id ?? null,
 			variantOf: forkedFrom?.id ?? null,
 			variantCount: 0, // filled in pass 2
-			changeNote: forkedFrom ? p.changeNote : null,
+			changeNote: forkedFrom ? capStr(p.changeNote, 2000) : null,
 			originalAuthor: p.originalAuthor ?? null,
-			attribution: Array.isArray(p.attribution) ? p.attribution : [],
-			createdAt: p.createdAt ?? body.createdAt ?? null,
+			attribution: Array.isArray(p.attribution) ? p.attribution.filter(isStr).map((a) => a.slice(0, 120)).slice(0, 20) : [],
+			createdAt: capStr(p.createdAt, 40),
 			contentHash: contentHashOf(p.channel),
 			packId,
 		}
@@ -224,6 +238,25 @@ for (const e of presets) {
 }
 for (const e of presets) e.variantCount = (children[e.id] ?? []).length
 
+// Undeclared copies: identical channel data across presets is only allowed when they form an open
+// fork chain (one declares the other as its parent, or they share a common parent that is also
+// present). Otherwise it is someone re-publishing another's work without the attribution/licence
+// gates above — reject it, so the contentHash we compute for everyone actually earns its keep.
+const byHash = new Map()
+for (const e of presets) (byHash.get(e.contentHash) ?? byHash.set(e.contentHash, []).get(e.contentHash)).push(e)
+for (const group of byHash.values()) {
+	if (group.length < 2) continue
+	const ids = new Set(group.map((g) => g.id))
+	for (const e of group) {
+		const declaresWithin = e.variantOf && ids.has(e.variantOf) // e forks another in the group
+		const parentOfOne = group.some((g) => g.variantOf === e.id) // another in the group forks e
+		if (!declaresWithin && !parentOfOne) {
+			const other = group.find((g) => g.id !== e.id)
+			fail(e.packId, `preset "${e.name}" (${e.id}) has channel data identical to "${other.name}" (${other.id}) but does not declare it as a fork — an undeclared copy`)
+		}
+	}
+}
+
 // ---- facets + aliases ------------------------------------------------------------------------
 
 const countBy = (key) => {
@@ -236,7 +269,9 @@ const countBy = (key) => {
 	return [...m.entries()].map(([name, count]) => ({ name, count })).sort((a, b) => b.count - a.count || a.name.localeCompare(b.name))
 }
 
-const aliases = {}
+// Prototype-less, so a preset whose slug is "constructor" or "__proto__" can't collide with an
+// inherited Object property and silently lose its alias.
+const aliases = Object.create(null)
 for (const e of presets) if (!(e.slug in aliases)) aliases[e.slug] = e.id
 
 // ---- report + write --------------------------------------------------------------------------

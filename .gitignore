@@ -1,5 +1,7 @@
 node_modules/
 site/index.json
+site/presets.json
+site/aliases.json
 site/packs/
 .wrangler/
 .DS_Store

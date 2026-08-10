@@ -18,12 +18,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3nt0cz4j65k47pxfjdtf",
       "name": "SM7B broadcast voice",
       "group": "Broadcast mics",
       "mic": "Shure SM7B",
       "style": "Broadcast voice",
       "notes": "Close-talked, pop filter on. 80 Hz high-pass clears desk rumble; a small 250 Hz dip removes boxiness; the 3.5 kHz presence lift cuts through camera audio — pull band 4 back if it reads harsh. Comp is a gentle 3:1 catching a few dB on speech. Set your own input gain (the SM7B wants a lot; a Cloudlifter helps). Based on common SM7B broadcast practice (80 Hz LC, 3–5 kHz presence, 3:1 ~-18 dB).",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -239,12 +241,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3kvg2ve7nqr2wqdbmtcv",
       "name": "PodMic warm read",
       "group": "Broadcast mics",
       "mic": "Rode PodMic",
       "style": "Podcast voice",
       "notes": "Warmer, closer podcast read. 75 Hz high-pass, a touch of 200 Hz reduction so it does not get muddy up close, a modest 4 kHz presence lift and a little 8 kHz air. Comp 3:1 for an even, produced read. Set your own input gain.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -460,12 +464,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3mtrdrs59d4bktcr0sa8",
       "name": "SM58 stage vocal",
       "group": "Broadcast mics",
       "mic": "Shure SM58",
       "style": "Live vocal",
       "notes": "Handheld SM58 for a live or run-and-gun vocal. 100 Hz high-pass to hold off handling and proximity boom, a small 400 Hz cut for cupped-mic mud, a presence lift at 4 kHz for cut through a PA. Firmer 4:1 comp for handheld level swings. The 58 rolls off its own top, so no air band.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -681,12 +687,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3ez87khmk65t4e0kpap6",
       "name": "AT2020 voiceover",
       "group": "Broadcast mics",
       "mic": "Audio-Technica AT2020",
       "style": "Voiceover",
       "notes": "Large-diaphragm condenser for a treated-room voiceover. 90 Hz high-pass, a gentle 300 Hz scoop for a cleaner low-mid, a broad 3 kHz presence and an air shelf at 12 kHz. A condenser hears the whole room, so the gate is a touch firmer. Smooth 3:1. Best in a quiet space.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -902,12 +910,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3qrgatv2me1s5mzfjd25",
       "name": "Voice safety net",
       "group": "Utility",
       "mic": "Any mic",
       "style": "Safety net",
       "notes": "No tone-shaping at all — the honest flat one. Every EQ band is off. It adds only a gentle gate to close the mic between sentences and a brake limiter to catch peaks before they clip. Copy this onto a channel you have not had time to tune: it will not colour the sound, it just keeps it safe.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,

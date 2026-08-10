@@ -17,12 +17,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3ps8j2v2v0zn5tf9d11a",
       "name": "Telephone",
       "group": "Creative",
       "mic": "Any mic",
       "style": "Effect",
       "notes": "The classic phone-line voice: a 300 Hz–3.4 kHz band-pass with a 1 kHz honk. Brutal high-pass and low-pass squeeze everything into the telephone band; the 1 kHz bell adds the nasal \"honk\"; heavy 6:1 comp flattens it. Note: the ATEM cannot add the light distortion a real telephone effect also uses — this is the band-limiting only. Copy it onto a caller/remote-guest channel for a stylised look.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -238,12 +240,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3e007614a8ztakwg2gsh",
       "name": "AM radio",
       "group": "Creative",
       "mic": "Any mic",
       "style": "Effect",
       "notes": "A vintage AM-broadcast voice — a little fuller than the telephone. Band-pass roughly 400 Hz–4.5 kHz, a presence honk around 1.8 kHz, and hard compression for that pumped, level-crushed radio sound. Like the telephone preset, the ATEM supplies the band-limiting and squash but not the analogue crunch. Fun on an announcer channel.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -459,12 +463,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3hx0pe9220mrwqh3qwb9",
       "name": "Megaphone",
       "group": "Creative",
       "mic": "Any mic",
       "style": "Effect",
       "notes": "Bullhorn / PA-horn honk: a big midrange bump around 1.2 kHz, everything below 400 Hz and above 4 kHz thrown away, and heavy compression so it barks at a constant level. The ATEM does the tone and the squash; the fizzy distortion of a real horn is beyond it. A stylised \"announcement\" voice.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -680,12 +686,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3jw8b73y6z3s0wte38fw",
       "name": "Movie-trailer voice",
       "group": "Creative",
       "mic": "Any mic",
       "style": "Effect",
       "notes": "\"In a world…\" — a big, deep announcer voice. A low-shelf lift under 120 Hz for chest and weight, a small 400 Hz cut to keep it from getting muddy, a controlled 3 kHz presence for diction, and slow, deep compression that never lets go. Works best on an already-deep voice on a good mic; it flatters, it does not manufacture.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,

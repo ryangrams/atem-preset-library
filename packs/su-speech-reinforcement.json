@@ -17,12 +17,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3gxr563zdsv5685dkndm",
       "name": "Lectern gooseneck speech",
       "group": "Speech reinforcement",
       "mic": "Gooseneck condenser",
       "style": "Speech clarity",
       "notes": "Podium / lectern gooseneck in a live room. 100 Hz high-pass buys feedback margin against the room PA; a 300 Hz cut for the boxy lectern cavity; a modest 3 kHz lift for intelligibility, kept from ringing. A firmer gate rejects the open room between sentences. Comp ~2.5:1. From church/AV speech-reinforcement practice.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,
@@ -238,12 +240,14 @@
     {
       "format": "atem-audio-preset",
       "version": 1,
+      "id": "ps_01kzhx3fygxpxv3t441wqw35eq",
       "name": "Lav / headset clarity",
       "group": "Speech reinforcement",
       "mic": "Lavalier / headset",
       "style": "Lav clarity",
       "notes": "Body-worn lav or headset, which tend to sound dull and chesty. 90 Hz high-pass, a small 500 Hz reduction for the chest resonance, a firmer 5 kHz presence lift to restore the intelligibility a lav loses off-axis, plus a little air. Comp 3:1 to even out the level as the head turns.",
       "author": "Studio Upgrade",
+      "license": "MIT",
       "defaultSections": {
         "gain": false,
         "volume": false,

@@ -128,3 +128,52 @@ export async function tooManyRecent(env, table, voter, limit, windowMs) {
 	const row = await env.DB.prepare(`SELECT COUNT(*) AS n FROM ${table} WHERE voter = ? AND created_at >= ?`).bind(voter, since).first()
 	return (row?.n ?? 0) >= limit
 }
+
+// ---- comments --------------------------------------------------------------------------------
+/**
+ * A preset's visible comments as a depth-1 tree: top-level comments (sorted most-helpful, then
+ * newest) each with a `replies` array (oldest-first, the reading order of a conversation). Marks
+ * which the given voter found helpful. Reply rows always point at a TOP-LEVEL id, so the tree is
+ * never deeper than one.
+ */
+export async function loadComments(env, presetId, voter) {
+	const { results } = await env.DB.prepare(
+		"SELECT id, parent_id, author, body, rating, reply_to_name, helpful_count, reply_count, created_at FROM comments WHERE preset_id = ? AND status = 'visible' ORDER BY created_at ASC",
+	)
+		.bind(presetId)
+		.all()
+	const rows = results ?? []
+
+	let helpfulSet = new Set()
+	if (voter && rows.length) {
+		const placeholders = rows.map(() => '?').join(',')
+		const { results: hv } = await env.DB.prepare(`SELECT comment_id FROM comment_helpful WHERE voter = ? AND comment_id IN (${placeholders})`)
+			.bind(voter, ...rows.map((r) => r.id))
+			.all()
+		helpfulSet = new Set((hv ?? []).map((r) => r.comment_id))
+	}
+
+	const shape = (r) => ({
+		id: r.id,
+		author: r.author,
+		body: r.body,
+		rating: r.rating,
+		replyToName: r.reply_to_name,
+		at: r.created_at,
+		helpful: r.helpful_count,
+		replyCount: r.reply_count,
+		youHelpful: helpfulSet.has(r.id),
+		replies: [],
+	})
+
+	const byId = new Map()
+	for (const r of rows) byId.set(r.id, shape(r))
+	const top = []
+	for (const r of rows) {
+		const c = byId.get(r.id)
+		if (r.parent_id && byId.has(r.parent_id)) byId.get(r.parent_id).replies.push(c)
+		else top.push(c)
+	}
+	top.sort((a, b) => b.helpful - a.helpful || b.at - a.at)
+	return top
+}

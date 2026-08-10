@@ -1,0 +1,902 @@
+{
+  "format": "atem-audio-preset-pack",
+  "version": 1,
+  "name": "Creative FX",
+  "description": "Stylised voices for effect: telephone, AM radio, megaphone and a deep movie-trailer announcer. Heads up — the ATEM has no distortion or saturation, so the telephone/AM/megaphone chains are the band-limiting and the honk only, not the grit. Each preset says so in its notes. Great fun on a caller, remote guest or announcer channel.",
+  "author": "Studio Upgrade",
+  "tags": [
+    "fx",
+    "creative",
+    "telephone",
+    "lofi",
+    "megaphone",
+    "trailer"
+  ],
+  "createdAt": "2026-08-09T00:00:00.000Z",
+  "presets": [
+    {
+      "format": "atem-audio-preset",
+      "version": 1,
+      "name": "Telephone",
+      "group": "Creative",
+      "mic": "Any mic",
+      "style": "Effect",
+      "notes": "The classic phone-line voice: a 300 Hz–3.4 kHz band-pass with a 1 kHz honk. Brutal high-pass and low-pass squeeze everything into the telephone band; the 1 kHz bell adds the nasal \"honk\"; heavy 6:1 comp flattens it. Note: the ATEM cannot add the light distortion a real telephone effect also uses — this is the band-limiting only. Copy it onto a caller/remote-guest channel for a stylised look.",
+      "author": "Studio Upgrade",
+      "defaultSections": {
+        "gain": false,
+        "volume": false,
+        "pan": false,
+        "eq": true,
+        "dynamics": true,
+        "inputConfig": false
+      },
+      "device": {
+        "model": "ATEM Mini Extreme ISO",
+        "release": "10.3",
+        "build": null
+      },
+      "channel": {
+        "meta": {
+          "inputId": 1001,
+          "sourceId": "-256",
+          "label": "Telephone",
+          "shortName": "Tel",
+          "inputType": 2,
+          "sourceType": 0,
+          "configuration": 1,
+          "inputLevel": 1,
+          "maxFramesDelay": 8,
+          "hasStereoSimulation": false,
+          "supportedMixOptions": [
+            1,
+            2
+          ],
+          "supportedConfigurations": [
+            1
+          ],
+          "supportedInputLevels": [
+            1,
+            4
+          ]
+        },
+        "levels": {
+          "gain": 0,
+          "faderGain": 0,
+          "balance": 0,
+          "framesDelay": 0,
+          "stereoSimulation": 0
+        },
+        "eq": {
+          "enabled": true,
+          "gain": 0,
+          "bands": [
+            {
+              "bandEnabled": true,
+              "shape": 16,
+              "frequencyRange": 2,
+              "frequency": 300,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 500,
+              "gain": -300,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 1000,
+              "gain": 600,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 4,
+              "frequency": 2000,
+              "gain": 200,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 4,
+              "frequency": 3000,
+              "gain": 100,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 2,
+              "frequencyRange": 4,
+              "frequency": 3400,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          ]
+        },
+        "dynamics": {
+          "makeUpGain": 300,
+          "expander": {
+            "expanderEnabled": false,
+            "gateEnabled": false,
+            "threshold": -4500,
+            "range": 2000,
+            "ratio": 200,
+            "attack": 100,
+            "hold": 1000,
+            "release": 10000
+          },
+          "compressor": {
+            "compressorEnabled": true,
+            "threshold": -2000,
+            "ratio": 600,
+            "attack": 100,
+            "hold": 0,
+            "release": 8000
+          },
+          "limiter": {
+            "limiterEnabled": true,
+            "threshold": -800,
+            "attack": 30,
+            "hold": 0,
+            "release": 4000
+          }
+        }
+      }
+    },
+    {
+      "format": "atem-audio-preset",
+      "version": 1,
+      "name": "AM radio",
+      "group": "Creative",
+      "mic": "Any mic",
+      "style": "Effect",
+      "notes": "A vintage AM-broadcast voice — a little fuller than the telephone. Band-pass roughly 400 Hz–4.5 kHz, a presence honk around 1.8 kHz, and hard compression for that pumped, level-crushed radio sound. Like the telephone preset, the ATEM supplies the band-limiting and squash but not the analogue crunch. Fun on an announcer channel.",
+      "author": "Studio Upgrade",
+      "defaultSections": {
+        "gain": false,
+        "volume": false,
+        "pan": false,
+        "eq": true,
+        "dynamics": true,
+        "inputConfig": false
+      },
+      "device": {
+        "model": "ATEM Mini Extreme ISO",
+        "release": "10.3",
+        "build": null
+      },
+      "channel": {
+        "meta": {
+          "inputId": 1001,
+          "sourceId": "-256",
+          "label": "AM radio",
+          "shortName": "AM",
+          "inputType": 2,
+          "sourceType": 0,
+          "configuration": 1,
+          "inputLevel": 1,
+          "maxFramesDelay": 8,
+          "hasStereoSimulation": false,
+          "supportedMixOptions": [
+            1,
+            2
+          ],
+          "supportedConfigurations": [
+            1
+          ],
+          "supportedInputLevels": [
+            1,
+            4
+          ]
+        },
+        "levels": {
+          "gain": 0,
+          "faderGain": 0,
+          "balance": 0,
+          "framesDelay": 0,
+          "stereoSimulation": 0
+        },
+        "eq": {
+          "enabled": true,
+          "gain": 0,
+          "bands": [
+            {
+              "bandEnabled": true,
+              "shape": 16,
+              "frequencyRange": 2,
+              "frequency": 400,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 800,
+              "gain": -200,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 1800,
+              "gain": 500,
+              "qFactor": 90,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 4,
+              "frequency": 3000,
+              "gain": 200,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 32,
+              "frequencyRange": 4,
+              "frequency": 4000,
+              "gain": -300,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 2,
+              "frequencyRange": 4,
+              "frequency": 4500,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          ]
+        },
+        "dynamics": {
+          "makeUpGain": 350,
+          "expander": {
+            "expanderEnabled": false,
+            "gateEnabled": false,
+            "threshold": -4500,
+            "range": 2000,
+            "ratio": 200,
+            "attack": 100,
+            "hold": 1000,
+            "release": 10000
+          },
+          "compressor": {
+            "compressorEnabled": true,
+            "threshold": -2200,
+            "ratio": 500,
+            "attack": 100,
+            "hold": 0,
+            "release": 7000
+          },
+          "limiter": {
+            "limiterEnabled": true,
+            "threshold": -800,
+            "attack": 30,
+            "hold": 0,
+            "release": 4000
+          }
+        }
+      }
+    },
+    {
+      "format": "atem-audio-preset",
+      "version": 1,
+      "name": "Megaphone",
+      "group": "Creative",
+      "mic": "Any mic",
+      "style": "Effect",
+      "notes": "Bullhorn / PA-horn honk: a big midrange bump around 1.2 kHz, everything below 400 Hz and above 4 kHz thrown away, and heavy compression so it barks at a constant level. The ATEM does the tone and the squash; the fizzy distortion of a real horn is beyond it. A stylised \"announcement\" voice.",
+      "author": "Studio Upgrade",
+      "defaultSections": {
+        "gain": false,
+        "volume": false,
+        "pan": false,
+        "eq": true,
+        "dynamics": true,
+        "inputConfig": false
+      },
+      "device": {
+        "model": "ATEM Mini Extreme ISO",
+        "release": "10.3",
+        "build": null
+      },
+      "channel": {
+        "meta": {
+          "inputId": 1001,
+          "sourceId": "-256",
+          "label": "Megaphone",
+          "shortName": "Mega",
+          "inputType": 2,
+          "sourceType": 0,
+          "configuration": 1,
+          "inputLevel": 1,
+          "maxFramesDelay": 8,
+          "hasStereoSimulation": false,
+          "supportedMixOptions": [
+            1,
+            2
+          ],
+          "supportedConfigurations": [
+            1
+          ],
+          "supportedInputLevels": [
+            1,
+            4
+          ]
+        },
+        "levels": {
+          "gain": 0,
+          "faderGain": 0,
+          "balance": 0,
+          "framesDelay": 0,
+          "stereoSimulation": 0
+        },
+        "eq": {
+          "enabled": true,
+          "gain": 0,
+          "bands": [
+            {
+              "bandEnabled": true,
+              "shape": 16,
+              "frequencyRange": 2,
+              "frequency": 400,
+              "gain": 0,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 700,
+              "gain": -200,
+              "qFactor": 90,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 1200,
+              "gain": 700,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 4,
+              "frequency": 2500,
+              "gain": 300,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 32,
+              "frequencyRange": 4,
+              "frequency": 4000,
+              "gain": -400,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 2,
+              "frequencyRange": 4,
+              "frequency": 4000,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          ]
+        },
+        "dynamics": {
+          "makeUpGain": 300,
+          "expander": {
+            "expanderEnabled": false,
+            "gateEnabled": false,
+            "threshold": -4500,
+            "range": 2000,
+            "ratio": 200,
+            "attack": 100,
+            "hold": 1000,
+            "release": 10000
+          },
+          "compressor": {
+            "compressorEnabled": true,
+            "threshold": -2200,
+            "ratio": 500,
+            "attack": 100,
+            "hold": 0,
+            "release": 6000
+          },
+          "limiter": {
+            "limiterEnabled": true,
+            "threshold": -800,
+            "attack": 30,
+            "hold": 0,
+            "release": 4000
+          }
+        }
+      }
+    },
+    {
+      "format": "atem-audio-preset",
+      "version": 1,
+      "name": "Movie-trailer voice",
+      "group": "Creative",
+      "mic": "Any mic",
+      "style": "Effect",
+      "notes": "\"In a world…\" — a big, deep announcer voice. A low-shelf lift under 120 Hz for chest and weight, a small 400 Hz cut to keep it from getting muddy, a controlled 3 kHz presence for diction, and slow, deep compression that never lets go. Works best on an already-deep voice on a good mic; it flatters, it does not manufacture.",
+      "author": "Studio Upgrade",
+      "defaultSections": {
+        "gain": false,
+        "volume": false,
+        "pan": false,
+        "eq": true,
+        "dynamics": true,
+        "inputConfig": false
+      },
+      "device": {
+        "model": "ATEM Mini Extreme ISO",
+        "release": "10.3",
+        "build": null
+      },
+      "channel": {
+        "meta": {
+          "inputId": 1001,
+          "sourceId": "-256",
+          "label": "Movie-trailer voice",
+          "shortName": "Epic",
+          "inputType": 2,
+          "sourceType": 0,
+          "configuration": 1,
+          "inputLevel": 1,
+          "maxFramesDelay": 8,
+          "hasStereoSimulation": false,
+          "supportedMixOptions": [
+            1,
+            2
+          ],
+          "supportedConfigurations": [
+            1
+          ],
+          "supportedInputLevels": [
+            1,
+            4
+          ]
+        },
+        "levels": {
+          "gain": 0,
+          "faderGain": 0,
+          "balance": 0,
+          "framesDelay": 0,
+          "stereoSimulation": 0
+        },
+        "eq": {
+          "enabled": true,
+          "gain": 0,
+          "bands": [
+            {
+              "bandEnabled": true,
+              "shape": 1,
+              "frequencyRange": 1,
+              "frequency": 120,
+              "gain": 400,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 400,
+              "gain": -150,
+              "qFactor": 90,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 1000,
+              "gain": 50,
+              "qFactor": 90,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 4,
+              "frequency": 3000,
+              "gain": 200,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 32,
+              "frequencyRange": 8,
+              "frequency": 10000,
+              "gain": 100,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": false,
+              "shape": 4,
+              "frequencyRange": 8,
+              "frequency": 12000,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          ]
+        },
+        "dynamics": {
+          "makeUpGain": 500,
+          "expander": {
+            "expanderEnabled": true,
+            "gateEnabled": false,
+            "threshold": -5000,
+            "range": 1500,
+            "ratio": 150,
+            "attack": 100,
+            "hold": 1200,
+            "release": 12000
+          },
+          "compressor": {
+            "compressorEnabled": true,
+            "threshold": -2400,
+            "ratio": 400,
+            "attack": 500,
+            "hold": 0,
+            "release": 15000
+          },
+          "limiter": {
+            "limiterEnabled": true,
+            "threshold": -1000,
+            "attack": 100,
+            "hold": 0,
+            "release": 9000
+          }
+        }
+      }
+    }
+  ]
+}

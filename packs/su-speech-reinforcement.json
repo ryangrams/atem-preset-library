@@ -1,0 +1,460 @@
+{
+  "format": "atem-audio-preset-pack",
+  "version": 1,
+  "name": "Speech reinforcement",
+  "description": "For the spoken word in a live room — a lectern gooseneck and a body-worn lav/headset. Both lean on a firmer gate and a high-pass for feedback margin, and restore the intelligibility these mics lose off-axis. Aimed at houses of worship, conference AV and stage announcers.",
+  "author": "Studio Upgrade",
+  "tags": [
+    "speech",
+    "lectern",
+    "lavalier",
+    "church",
+    "av",
+    "live"
+  ],
+  "createdAt": "2026-08-09T00:00:00.000Z",
+  "presets": [
+    {
+      "format": "atem-audio-preset",
+      "version": 1,
+      "name": "Lectern gooseneck speech",
+      "group": "Speech reinforcement",
+      "mic": "Gooseneck condenser",
+      "style": "Speech clarity",
+      "notes": "Podium / lectern gooseneck in a live room. 100 Hz high-pass buys feedback margin against the room PA; a 300 Hz cut for the boxy lectern cavity; a modest 3 kHz lift for intelligibility, kept from ringing. A firmer gate rejects the open room between sentences. Comp ~2.5:1. From church/AV speech-reinforcement practice.",
+      "author": "Studio Upgrade",
+      "defaultSections": {
+        "gain": false,
+        "volume": false,
+        "pan": false,
+        "eq": true,
+        "dynamics": true,
+        "inputConfig": false
+      },
+      "device": {
+        "model": "ATEM Mini Extreme ISO",
+        "release": "10.3",
+        "build": null
+      },
+      "channel": {
+        "meta": {
+          "inputId": 1001,
+          "sourceId": "-256",
+          "label": "Lectern gooseneck speech",
+          "shortName": "Lect",
+          "inputType": 2,
+          "sourceType": 0,
+          "configuration": 1,
+          "inputLevel": 1,
+          "maxFramesDelay": 8,
+          "hasStereoSimulation": false,
+          "supportedMixOptions": [
+            1,
+            2
+          ],
+          "supportedConfigurations": [
+            1
+          ],
+          "supportedInputLevels": [
+            1,
+            4
+          ]
+        },
+        "levels": {
+          "gain": 0,
+          "faderGain": 0,
+          "balance": 0,
+          "framesDelay": 0,
+          "stereoSimulation": 0
+        },
+        "eq": {
+          "enabled": true,
+          "gain": 0,
+          "bands": [
+            {
+              "bandEnabled": true,
+              "shape": 16,
+              "frequencyRange": 1,
+              "frequency": 100,
+              "gain": 0,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 300,
+              "gain": -200,
+              "qFactor": 120,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 900,
+              "gain": 50,
+              "qFactor": 90,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 4,
+              "frequency": 3000,
+              "gain": 200,
+              "qFactor": 90,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 32,
+              "frequencyRange": 8,
+              "frequency": 9000,
+              "gain": 100,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": false,
+              "shape": 4,
+              "frequencyRange": 8,
+              "frequency": 12000,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          ]
+        },
+        "dynamics": {
+          "makeUpGain": 300,
+          "expander": {
+            "expanderEnabled": true,
+            "gateEnabled": false,
+            "threshold": -3800,
+            "range": 2500,
+            "ratio": 300,
+            "attack": 60,
+            "hold": 800,
+            "release": 9000
+          },
+          "compressor": {
+            "compressorEnabled": true,
+            "threshold": -1800,
+            "ratio": 250,
+            "attack": 400,
+            "hold": 0,
+            "release": 10000
+          },
+          "limiter": {
+            "limiterEnabled": true,
+            "threshold": -1200,
+            "attack": 71,
+            "hold": 0,
+            "release": 9300
+          }
+        }
+      }
+    },
+    {
+      "format": "atem-audio-preset",
+      "version": 1,
+      "name": "Lav / headset clarity",
+      "group": "Speech reinforcement",
+      "mic": "Lavalier / headset",
+      "style": "Lav clarity",
+      "notes": "Body-worn lav or headset, which tend to sound dull and chesty. 90 Hz high-pass, a small 500 Hz reduction for the chest resonance, a firmer 5 kHz presence lift to restore the intelligibility a lav loses off-axis, plus a little air. Comp 3:1 to even out the level as the head turns.",
+      "author": "Studio Upgrade",
+      "defaultSections": {
+        "gain": false,
+        "volume": false,
+        "pan": false,
+        "eq": true,
+        "dynamics": true,
+        "inputConfig": false
+      },
+      "device": {
+        "model": "ATEM Mini Extreme ISO",
+        "release": "10.3",
+        "build": null
+      },
+      "channel": {
+        "meta": {
+          "inputId": 1001,
+          "sourceId": "-256",
+          "label": "Lav / headset clarity",
+          "shortName": "Lav",
+          "inputType": 2,
+          "sourceType": 0,
+          "configuration": 1,
+          "inputLevel": 1,
+          "maxFramesDelay": 8,
+          "hasStereoSimulation": false,
+          "supportedMixOptions": [
+            1,
+            2
+          ],
+          "supportedConfigurations": [
+            1
+          ],
+          "supportedInputLevels": [
+            1,
+            4
+          ]
+        },
+        "levels": {
+          "gain": 0,
+          "faderGain": 0,
+          "balance": 0,
+          "framesDelay": 0,
+          "stereoSimulation": 0
+        },
+        "eq": {
+          "enabled": true,
+          "gain": 0,
+          "bands": [
+            {
+              "bandEnabled": true,
+              "shape": 16,
+              "frequencyRange": 1,
+              "frequency": 90,
+              "gain": 0,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 500,
+              "gain": -150,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 2,
+              "frequency": 1500,
+              "gain": 50,
+              "qFactor": 90,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 4,
+              "frequencyRange": 4,
+              "frequency": 5000,
+              "gain": 300,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": true,
+              "shape": 32,
+              "frequencyRange": 8,
+              "frequency": 10000,
+              "gain": 150,
+              "qFactor": 71,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            },
+            {
+              "bandEnabled": false,
+              "shape": 4,
+              "frequencyRange": 8,
+              "frequency": 12000,
+              "gain": 0,
+              "qFactor": 100,
+              "supportedShapes": [
+                1,
+                2,
+                4,
+                8,
+                16,
+                32
+              ],
+              "supportedFrequencyRanges": [
+                1,
+                2,
+                4,
+                8
+              ]
+            }
+          ]
+        },
+        "dynamics": {
+          "makeUpGain": 350,
+          "expander": {
+            "expanderEnabled": true,
+            "gateEnabled": false,
+            "threshold": -4500,
+            "range": 1800,
+            "ratio": 200,
+            "attack": 80,
+            "hold": 1000,
+            "release": 10000
+          },
+          "compressor": {
+            "compressorEnabled": true,
+            "threshold": -1600,
+            "ratio": 300,
+            "attack": 250,
+            "hold": 0,
+            "release": 11000
+          },
+          "limiter": {
+            "limiterEnabled": true,
+            "threshold": -1200,
+            "attack": 71,
+            "hold": 0,
+            "release": 9300
+          }
+        }
+      }
+    }
+  ]
+}

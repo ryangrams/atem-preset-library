@@ -185,7 +185,7 @@ for (const file of packFiles) {
 			changeNote: forkedFrom ? capStr(p.changeNote, 2000) : null,
 			originalAuthor: p.originalAuthor ?? null,
 			attribution: Array.isArray(p.attribution) ? p.attribution.filter(isStr).map((a) => a.slice(0, 120)).slice(0, 20) : [],
-			createdAt: capStr(p.createdAt, 40),
+			createdAt: capStr(p.createdAt ?? body.createdAt, 40),
 			contentHash: contentHashOf(p.channel),
 			packId,
 		}

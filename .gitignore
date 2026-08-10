@@ -5,3 +5,4 @@ site/aliases.json
 site/packs/
 .wrangler/
 .DS_Store
+.dev.vars

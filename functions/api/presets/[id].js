@@ -69,6 +69,9 @@ export async function onRequestGet({ request, env, params }) {
 		sampleUrl: p.sampleUrl,
 		defaultSections: p.defaultSections,
 		channel: p.channel,
+		// what a fork of THIS preset needs to record its lineage
+		packId: p.packId,
+		contentHash: p.contentHash,
 		// lineage
 		forkedFrom: p.forkedFrom,
 		variantOf: p.variantOf,

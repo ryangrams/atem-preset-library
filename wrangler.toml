@@ -17,7 +17,7 @@ bucket_name = "atem-feedback-shots"
 GITHUB_FEEDBACK_REPO = "ryangrams/atem-audio-presets"
 # Public base URL of the feedback R2 bucket; set once the bucket has public access (r2.dev or a
 # custom domain). The GitHub token itself is a Pages secret (GITHUB_FEEDBACK_TOKEN), never here.
-FEEDBACK_PUBLIC_URL = "https://REPLACE-WITH-R2-PUBLIC-URL"
+FEEDBACK_PUBLIC_URL = "https://pub-11c46031d9d74abdb355b0f9b70feb59.r2.dev"
 # Hard global ceiling on total reports per day (abuse circuit breaker). Lower it any time to clamp
 # down; the whole system stays inside R2's free tier at this default.
 FEEDBACK_DAILY_CAP = "200"

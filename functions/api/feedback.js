@@ -47,11 +47,20 @@ export async function onRequestPost({ request, env }) {
 
 	const voter = await voterId(request, env)
 
-	// Turnstile (fail closed) then rate limits — filing issues is expensive to clean up.
+	// Turnstile (fail closed) then per-person rate limits — filing issues is expensive to clean up.
 	const ts = await turnstileVerify(body?.turnstileToken, env.TURNSTILE_SECRET, request.headers.get('cf-connecting-ip'))
 	if (!ts.ok) return json({ error: 'Could not verify you are human. Please try again.', reason: ts.reason }, 403)
 	if (await tooManyRecent(env, 'feedback', voter, 3, 60 * 60_000)) return json({ error: 'Thanks — you have sent a few just now. Try again in a little while.' }, 429)
 	if (await tooManyRecent(env, 'feedback', voter, 10, 24 * 60 * 60_000)) return json({ error: 'You have reached the daily feedback limit.' }, 429)
+
+	// GLOBAL circuit breaker: a hard ceiling on total reports across everyone per day, so distributed
+	// abuse (many IPs, each under the per-person limit) still cannot run up R2 storage or spam the
+	// issue tracker. Tunable without a redeploy via the FEEDBACK_DAILY_CAP var. At the default 200/day
+	// the whole system stays deep inside R2's free tier no matter what.
+	const dailyCap = Number(env.FEEDBACK_DAILY_CAP) || 200
+	const dayAgo = Date.now() - 24 * 60 * 60_000
+	const globalToday = await env.DB.prepare('SELECT COUNT(*) AS n FROM feedback WHERE created_at >= ?').bind(dayAgo).first()
+	if ((globalToday?.n ?? 0) >= dailyCap) return json({ error: 'We have had a lot of feedback today — please try again tomorrow. Thank you!' }, 429)
 
 	// Optional screenshot → R2 (public), embedded in the issue.
 	let imageUrl = null

@@ -6,7 +6,7 @@ name: Publish library
 on:
   push:
     branches: [main]
-    paths: ['packs/**', 'site/**', 'scripts/**']
+    paths: ['packs/**', 'site/**', 'scripts/**', 'functions/**', 'worker/**', 'wrangler.toml']
   workflow_dispatch:
 
 jobs:

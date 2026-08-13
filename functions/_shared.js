@@ -124,7 +124,7 @@ export async function turnstileVerify(token, secret, ip) {
 
 // D1/SQLite cannot bind a table identifier, so `table` is interpolated — allow only known names, so
 // this can never become an injection point even if a caller passes user input by mistake.
-const RATE_TABLES = new Set(['comments', 'votes'])
+const RATE_TABLES = new Set(['comments', 'votes', 'feedback'])
 /** Cheap D1 rate check for a non-idempotent write: has this voter done N of them in the last window? */
 export async function tooManyRecent(env, table, voter, limit, windowMs) {
 	if (!RATE_TABLES.has(table)) throw new Error(`rate-limit table not allowed: ${table}`)

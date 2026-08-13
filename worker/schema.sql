@@ -70,3 +70,14 @@ CREATE TABLE IF NOT EXISTS comment_helpful (
   created_at INTEGER NOT NULL,
   PRIMARY KEY (comment_id, voter)
 );
+
+-- FEEDBACK — a log of in-app bug reports / ideas, for rate-limiting and a record beside the GitHub
+-- issue each one opens. The report body itself lives in the issue, not here.
+CREATE TABLE IF NOT EXISTS feedback (
+  id         TEXT    PRIMARY KEY,
+  voter      TEXT    NOT NULL,
+  kind       TEXT    NOT NULL,   -- bug | idea
+  issue      INTEGER,             -- the GitHub issue number, once filed
+  created_at INTEGER NOT NULL
+);
+CREATE INDEX IF NOT EXISTS feedback_by_voter ON feedback (voter, created_at);

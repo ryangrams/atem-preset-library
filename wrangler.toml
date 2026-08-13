@@ -7,3 +7,14 @@ pages_build_output_dir = "site"
 binding = "DB"
 database_name = "atem-preset-votes"
 database_id = "2b851612-9dda-4584-9ce3-ffae1cac70ae"
+
+# In-app feedback: screenshots land in R2, and each report opens a GitHub issue on the app repo.
+[[r2_buckets]]
+binding = "FEEDBACK_BUCKET"
+bucket_name = "atem-feedback-shots"
+
+[vars]
+GITHUB_FEEDBACK_REPO = "ryangrams/atem-audio-presets"
+# Public base URL of the feedback R2 bucket; set once the bucket has public access (r2.dev or a
+# custom domain). The GitHub token itself is a Pages secret (GITHUB_FEEDBACK_TOKEN), never here.
+FEEDBACK_PUBLIC_URL = "https://REPLACE-WITH-R2-PUBLIC-URL"

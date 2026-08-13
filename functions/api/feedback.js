@@ -90,7 +90,9 @@ export async function onRequestPost({ request, env }) {
 		context.platform ? `- **Platform:** ${context.platform}` : '',
 		context.atem ? `- **Switcher:** ${context.atem}` : '',
 		context.view ? `- **View:** ${context.view}` : '',
-		email ? `- **Reporter:** ${email}` : '',
+		// The reporter's email is NOT written into the public issue — it is kept private in D1 and only
+		// noted here so the maintainer knows to look it up.
+		email ? '- **Reporter:** left contact details (private — see the feedback log)' : '',
 		'',
 		imageUrl ? `![screenshot](${imageUrl})` : '',
 		'',
@@ -116,7 +118,8 @@ export async function onRequestPost({ request, env }) {
 	}
 	const issue = await gh.json()
 
-	await env.DB.prepare('INSERT INTO feedback (id, voter, kind, issue, created_at) VALUES (?, ?, ?, ?, ?)').bind(ulid('fb_'), voter, kind, issue.number ?? null, Date.now()).run()
+	// Store the email privately, tied to the issue number — never public.
+	await env.DB.prepare('INSERT INTO feedback (id, voter, kind, issue, email, created_at) VALUES (?, ?, ?, ?, ?, ?)').bind(ulid('fb_'), voter, kind, issue.number ?? null, email || null, Date.now()).run()
 
 	return json({ ok: true, url: issue.html_url, number: issue.number })
 }

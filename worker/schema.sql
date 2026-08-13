@@ -78,6 +78,7 @@ CREATE TABLE IF NOT EXISTS feedback (
   voter      TEXT    NOT NULL,
   kind       TEXT    NOT NULL,   -- bug | idea
   issue      INTEGER,             -- the GitHub issue number, once filed
+  email      TEXT,                -- reporter's contact, kept PRIVATE here (never in the public issue)
   created_at INTEGER NOT NULL
 );
 CREATE INDEX IF NOT EXISTS feedback_by_voter ON feedback (voter, created_at);

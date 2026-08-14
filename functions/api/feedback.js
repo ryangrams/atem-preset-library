@@ -104,7 +104,7 @@ export async function onRequestPost({ request, env }) {
 	const gh = await fetch(`https://api.github.com/repos/${repo}/issues`, {
 		method: 'POST',
 		headers: {
-			authorization: `Bearer ${env.GITHUB_FEEDBACK_TOKEN}`,
+			authorization: `Bearer ${env.GITHUB_FEEDBACK_TOKEN.trim()}`,
 			accept: 'application/vnd.github+json',
 			'user-agent': 'atem-audio-presets-feedback',
 			'x-github-api-version': '2022-11-28',
